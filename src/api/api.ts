@@ -9,7 +9,7 @@ function checkResponse<T>(res: {ok: boolean; json: () => Promise<T>}): Promise<T
 
 export function getStateInstance ({idInstance, apiTokenInstance}: IUserData) {
   return fetch(`https://api.green-api.com/waInstance${idInstance}/getStateInstance/${apiTokenInstance}`, {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -19,7 +19,7 @@ export function getStateInstance ({idInstance, apiTokenInstance}: IUserData) {
 
 export function SendMessage ({...props}: IMessageWithUserData) {
   return fetch(`https://api.green-api.com/waInstance${props.idInstance}/SendMessage/${props.apiTokenInstance}`, {
-    method: 'GET',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },

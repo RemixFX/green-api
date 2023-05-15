@@ -1,36 +1,39 @@
-import { FormEvent, useRef } from 'react'
+import { FormEvent, useEffect, useRef } from 'react'
 import styles from './login.module.css'
-import { getStateInstance } from '../../api/api'
+import { useAppSelector } from '../../store/hooks'
+import { IUserData } from '../../models/requestData'
 
-export default function Login() {
+export default function Login({submitForm}: {submitForm: ({...args}: IUserData) => void}) {
 
   const idRef = useRef<HTMLInputElement>(null)
   const tokenRef = useRef<HTMLInputElement>(null)
   const dialogfRef = useRef<HTMLDialogElement>(null)
+  const {userData} = useAppSelector(state => state.user)
 
-  const submitForm = async (e: FormEvent<HTMLFormElement>) => {
+  // Закрытие окна формы, если проверка авторизации прошла успешно
+  useEffect(() => {
+    if(userData.idInstance !== '') {
+      dialogfRef.current?.close()
+    }
+  },[userData])
+
+  // Передача функции с данными полей на уровень выше
+  const handleSubmitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (idRef.current && tokenRef.current) {
-      try {
-        const response: {stateInstance: string} = await getStateInstance({
-          idInstance: idRef.current.value,
-          apiTokenInstance: tokenRef.current.value
-        })
-        console.log(response)
-      } catch (error: unknown) {
-        console.log(error)
-      }
-    }
-    
-    //dialogfRef.current?.close()
+      submitForm({
+        idInstance: idRef.current.value,
+        apiTokenInstance: tokenRef.current.value
+      })
   }
+}
 
   return (
     <dialog className={styles.dialog} ref={dialogfRef} open={true}>
       <div className={styles.container}>
         <h1 className={styles.header}>Добро пожаловать в GREEN-API</h1>
         <p className={styles.paragraph}>протестируйте возможности отправки и приема сообщений на WhatsApp любому номеру</p>
-        <form className={styles.form} onSubmit={e => submitForm(e)}>
+        <form className={styles.form} onSubmit={e => handleSubmitForm(e)}>
           <div className={styles.field}>
             <label className={styles.field__name}>IdInstance:</label>
             <input className={styles.field__input} type="text" required
