@@ -1,0 +1,78 @@
+.dialog {
+  background: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 675px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  color: var(--color);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  margin: 0 0 23px;
+}
+
+.paragraph {
+  margin: 0 0 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.field__name {
+  font-size: 1.7rem;
+}
+
+.field__input {
+  width: 60%;
+  height: 40px;
+  font-size: 1.7rem;
+  border-radius: 11px;
+  border: 4px solid #092C4E;
+}
+
+.registration {
+  margin: 22px 0 0;
+}
+
+.registration__link {
+  margin-left: 10px;
+  color: inherit;
+}
+
+.button {
+  width: 40%;
+  min-height: 50px;
+  background-color: #092c4e;
+  margin-top: 80px;
+  font-size: 1.2rem;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #01747c;
+  border: 1px solid #d5d5d5;
+}
