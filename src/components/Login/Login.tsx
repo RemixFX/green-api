@@ -1,16 +1,28 @@
 import { FormEvent, useRef } from 'react'
 import styles from './login.module.css'
+import { getStateInstance } from '../../api/api'
 
 export default function Login() {
 
-  const tokenRef = useRef<HTMLInputElement>(null)
   const idRef = useRef<HTMLInputElement>(null)
+  const tokenRef = useRef<HTMLInputElement>(null)
   const dialogfRef = useRef<HTMLDialogElement>(null)
 
-  const submitForm = (e: FormEvent<HTMLFormElement>) => {
+  const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(tokenRef.current?.value, idRef.current?.value)
-    dialogfRef.current?.close()
+    if (idRef.current && tokenRef.current) {
+      try {
+        const response: {stateInstance: string} = await getStateInstance({
+          idInstance: idRef.current.value,
+          apiTokenInstance: tokenRef.current.value
+        })
+        console.log(response)
+      } catch (error: unknown) {
+        console.log(error)
+      }
+    }
+    
+    //dialogfRef.current?.close()
   }
 
   return (
