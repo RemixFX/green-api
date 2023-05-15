@@ -2,6 +2,7 @@
   --bg-color-dark: #111b21;
   --bg-color-gradient: linear-gradient(168deg, #00a49b,#026773,#092c4e);
   --color: rgba(255, 255, 255, 0.87);
+  --width-max: 675px;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;

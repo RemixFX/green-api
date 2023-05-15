@@ -1,14 +1,15 @@
 import { FormEvent, useEffect, useRef } from 'react'
-import styles from './login.module.css'
+import styles from './Login.module.css'
 import { useAppSelector } from '../../store/hooks'
 import { IUserData } from '../../models/requestData'
+import ErrorFrame from '../ErrorFrame/ErrorFrame'
 
 export default function Login({submitForm}: {submitForm: ({...args}: IUserData) => void}) {
 
   const idRef = useRef<HTMLInputElement>(null)
   const tokenRef = useRef<HTMLInputElement>(null)
   const dialogfRef = useRef<HTMLDialogElement>(null)
-  const {userData} = useAppSelector(state => state.user)
+  const {userData, error, loading} = useAppSelector(state => state.user)
 
   // Закрытие окна формы, если проверка авторизации прошла успешно
   useEffect(() => {
@@ -51,6 +52,7 @@ export default function Login({submitForm}: {submitForm: ({...args}: IUserData) 
           </p>
           <button className={styles.button}>Войти</button>
         </form>
+        <ErrorFrame text={error.message}/>
       </div>
     </dialog>
   )
