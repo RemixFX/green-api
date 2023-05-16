@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react'
-import styles from '../App.module.css'
+import styles from '../App/App.module.css'
 import Login from '../Login/Login'
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { fetchUserAuthorization } from '../../store/reducers/ActionCreators';

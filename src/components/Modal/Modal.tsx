@@ -1,5 +1,5 @@
 import { FormEvent, MouseEvent, useEffect, useRef } from 'react'
-import styles from '../Modal.module.css'
+import styles from '../Modal/Modal.module.css'
 import ErrorFrame from '../ErrorFrame/ErrorFrame';
 
 interface PropsModal {

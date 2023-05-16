@@ -1,4 +1,4 @@
-import styles from '../ErrorFrame.module.css'
+import styles from '../ErrorFrame/ErrorFrame.module.css'
 
 export default function ErrorFrame ({text}: {text: string}) {
   return (

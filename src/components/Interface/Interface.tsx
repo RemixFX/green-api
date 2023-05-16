@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Chat from '../Chat/Chat'
 import Contacts from '../Contacts/Contacts'
-import styles from '../Interface.module.css'
+import styles from '../Interface/Interface.module.css'
 import { IUserContact } from '../../models/requestData'
 
 export default function Interface () {
