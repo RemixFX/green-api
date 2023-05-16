@@ -19,7 +19,7 @@ export default function Login({submitForm}: {submitForm: ({...args}: IUserData) 
   },[userData])
 
   // Передача функции с данными полей на уровень выше
-  const handleSubmitForm = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (idRef.current && tokenRef.current) {
       submitForm({

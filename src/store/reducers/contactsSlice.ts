@@ -6,12 +6,14 @@ export interface contactsState {
   contacts: IUserContact[];
   loading: boolean;
   error: IError;
+  isOpenContactForm: boolean;
 }
 
 const initialState: contactsState = {
   contacts: [],
   loading: false,
-  error: { isError: false, message: '' }
+  error: { isError: false, message: '' },
+  isOpenContactForm: false
 }
 
 export const contactsSlice = createSlice({
@@ -19,19 +21,20 @@ export const contactsSlice = createSlice({
   initialState,
   reducers: {
     dataFetching: state => {
-      state.contacts = initialState.contacts
       state.loading = true
       state.error = initialState.error
+      state.isOpenContactForm = true
     },
     dataFetchingSuccess: (state, action: PayloadAction<IUserContact>) => {
       state.contacts = [...state.contacts, action.payload]
       state.loading = false
       state.error = initialState.error
+      state.isOpenContactForm = false
     },
     dataFetchingError: (state, action: PayloadAction<IError>) => {
-      state.contacts = initialState.contacts
       state.loading = false
       state.error = action.payload
+      state.isOpenContactForm = true
     },
   }
 })
