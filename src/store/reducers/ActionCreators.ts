@@ -1,6 +1,7 @@
-import { getStateInstance } from "../../api/api";
-import { IUserData } from "../../models/requestData";
+import { getContactInfo, getStateInstance } from "../../api/api";
+import { IUserContact, IUserData } from "../../models/requestData";
 import { AppDispatch } from "../store";
+import { contactsSlice } from "./contactsSlice";
 import { userSlice } from "./userSlice";
 
 export const fetchUserAuthorization = ({ idInstance, apiTokenInstance }: IUserData) => async (dispatch: AppDispatch) => {
@@ -31,10 +32,22 @@ export const fetchUserAuthorization = ({ idInstance, apiTokenInstance }: IUserDa
           message: `Аккаунт в процессе запуска (сервисный режим). Может потребоваться до 5 минут`
         }))
     }
-  } catch (error: any) {
+  } catch {
     dispatch(userSlice.actions.dataFetchingError({
       isError: true,
       message: `IdInstance или ApiTokenInstance указан неверно`
+    }))
+  }
+}
+
+export const fetchUserContact = ({idInstance, apiTokenInstance}: IUserData, chatId: string) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(contactsSlice.actions.dataFetching())
+    const response: IUserContact = await getContactInfo({idInstance, apiTokenInstance}, chatId)
+    dispatch(contactsSlice.actions.dataFetchingSuccess(response))
+  } catch {
+    dispatch(contactsSlice.actions.dataFetchingError({
+      isError: true, message: 'Неверно указан номер контакта, формат должен быть в виде: 71234567890'
     }))
   }
 }

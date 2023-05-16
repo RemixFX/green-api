@@ -33,3 +33,17 @@ export function SendMessage ({...props}: IMessageWithUserData) {
   })
   .then(checkResponse)
 }
+
+export function getContactInfo ({idInstance, apiTokenInstance}: IUserData, chatId: string) {
+  return fetch(`https://api.green-api.com/waInstance${idInstance}/getContactInfo/${apiTokenInstance}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 
+      chatId: chatId + '@c.us',
+     })
+  })
+  .then(checkResponse)
+}
+

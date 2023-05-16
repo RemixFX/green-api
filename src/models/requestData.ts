@@ -10,3 +10,9 @@ export interface IMessageWithUserData extends IUserData {
   archiveChat?: boolean;
   linkPreview?: boolean;
 }
+
+export interface IUserContact {
+  name: string;
+  avatar: string;
+  chatId: string;
+}

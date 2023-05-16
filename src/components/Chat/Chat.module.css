@@ -1,0 +1,25 @@
+.container {
+  width: 70%;
+  height: 100%;
+  background: var(--bg-color-gray);
+  background: url(../../assets/endless-constellation.svg);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 300px;
+}
+
+.title {
+  display: inline-flex;
+  align-items: center;
+  margin: 3rem;
+}
+
+.image {
+  background: url(../../assets/arrow_left.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 13px;
+  width: 62px;
+  height: 30px;
+}

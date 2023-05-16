@@ -4,6 +4,7 @@ import Login from '../Login/Login'
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { fetchUserAuthorization } from '../../store/reducers/ActionCreators';
 import { IUserData } from '../../models/requestData';
+import Layout from '../Layout/Layout';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className={styles.page}>
       <Login submitForm={submitForm}/>
+      <Layout/>
     </div>
   )
 }
