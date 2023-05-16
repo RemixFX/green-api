@@ -1,4 +1,4 @@
-import styles from './Contacts.module.css'
+import styles from '../Contacts.module.css'
 import avatar from '../../assets/avatar.png'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import Modal from '../Modal/Modal'

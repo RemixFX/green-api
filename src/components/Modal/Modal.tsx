@@ -1,5 +1,5 @@
 import { FormEvent, MouseEvent, useEffect, useRef } from 'react'
-import styles from './Modal.module.css'
+import styles from '../Modal.module.css'
 import ErrorFrame from '../ErrorFrame/ErrorFrame';
 
 interface PropsModal {
@@ -49,7 +49,7 @@ export default function Modal({ isOpenForm, submitForm, closeForm, errorText }: 
         <form className={styles.form} onSubmit={e => handleSubmitForm(e)}>
           <label className={styles.field}>Введите номер контакта в формате 71234567890</label>
           <input className={styles.input} type="text" required ref={idRef} />
-          <button className={styles.button}>Войти</button>
+          <button className={styles.button}>Создать чат</button>
           <ErrorFrame text={errorText} />
           <span className={styles.close} onClick={closeForm}>X</span>
         </form>

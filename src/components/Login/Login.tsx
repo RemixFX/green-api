@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useRef } from 'react'
-import styles from './Login.module.css'
+import styles from '../Login/Login.module.css'
 import { useAppSelector } from '../../store/hooks'
 import { IUserData } from '../../models/requestData'
 import ErrorFrame from '../ErrorFrame/ErrorFrame'

@@ -1,5 +1,5 @@
 import { IUserContact } from '../../models/requestData'
-import styles from './Chat.module.css'
+import styles from '../Chat.module.css'
 import avatar from '../../assets/avatar.png'
 import { useRef, KeyboardEvent, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
