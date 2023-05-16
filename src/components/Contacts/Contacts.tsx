@@ -4,10 +4,15 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import Modal from '../Modal/Modal'
 import { useEffect, useState } from 'react'
 import { fetchUserContact } from '../../store/reducers/ActionCreators'
+import { IUserContact } from '../../models/requestData'
 
-export default function Contacts() {
+interface ContactsProps {
+  startChat: ({...values}: IUserContact) => void
+}
 
-  const { contacts, error, isOpenContactForm, loading } = useAppSelector(state => state.contacts)
+export default function Contacts({startChat}: ContactsProps) {
+
+  const { contacts, error, isOpenContactForm } = useAppSelector(state => state.contacts)
   const { userData } = useAppSelector(state => state.user)
   const [isOpenForm, setIsOpenform] = useState<boolean>(false)
   const dispatch = useAppDispatch()
@@ -27,13 +32,18 @@ export default function Contacts() {
     dispatch(fetchUserContact(userData, chatId))
   }
 
+  const handleContactClick = ({...values}: IUserContact) => {
+    startChat({...values})
+  }
+
   return (
     <div className={styles.contacts}>
       {contacts.map((element, index) =>
-        <article className={styles.element} key={index}>
+        <article className={styles.element} key={index}
+         onClick={() => handleContactClick({name: element.name, chatId: element.chatId, avatar: element.avatar})}>
           <div className={styles.container}>
             <p className={styles.record}>{element.name}</p>
-            <p className={styles.record}>{element.chatId.slice(0, 11)}</p>
+            <p className={styles.record}>{element.chatId}</p>
           </div>
           <img src={element.avatar ? element.avatar : avatar} className={styles.images} />
         </article>

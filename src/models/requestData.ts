@@ -16,3 +16,8 @@ export interface IUserContact {
   avatar: string;
   chatId: string;
 }
+
+export interface IUserMessage {
+  idMessage: string;
+  message: string;
+}

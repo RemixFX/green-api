@@ -17,7 +17,7 @@ export function getStateInstance ({idInstance, apiTokenInstance}: IUserData) {
   .then(checkResponse)
 }
 
-export function SendMessage ({...props}: IMessageWithUserData) {
+export function sendMessage ({...props}: IMessageWithUserData) {
   return fetch(`https://api.green-api.com/waInstance${props.idInstance}/SendMessage/${props.apiTokenInstance}`, {
     method: 'POST',
     headers: {
@@ -25,7 +25,7 @@ export function SendMessage ({...props}: IMessageWithUserData) {
     },
     body: JSON.stringify({ 
       chatId: props.chatId + '@c.us',
-      message: "I use Green-API to send this message to you!",
+      message: props.message,
       quotedMessageId: props.quotedMessageId,
       archiveChat: props.archiveChat,
       linkPreview: props.linkPreview,
