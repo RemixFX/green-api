@@ -47,3 +47,23 @@ export function getContactInfo ({idInstance, apiTokenInstance}: IUserData, chatI
   .then(checkResponse)
 }
 
+export function receiveNotification ({idInstance, apiTokenInstance}: IUserData) {
+  return fetch(`https://api.green-api.com/waInstance${idInstance}/ReceiveNotification/${apiTokenInstance}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+  .then(checkResponse)
+}
+
+export function deleteNotification ({idInstance, apiTokenInstance}: IUserData, receiptId: number) {
+  return fetch(`https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${receiptId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+  .then(checkResponse)
+}
+

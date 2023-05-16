@@ -70,6 +70,10 @@
   align-self: end;
 }
 
+.message_type_incoming {
+  align-self: start;
+}
+
 .footer {
   flex: 0 0 auto;
   margin-top: auto;

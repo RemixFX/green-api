@@ -20,4 +20,5 @@ export interface IUserContact {
 export interface IUserMessage {
   idMessage: string;
   message: string;
+  incoming: boolean;
 }

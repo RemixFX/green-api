@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import Chat from '../Chat/Chat'
 import Contacts from '../Contacts/Contacts'
-import styles from './Layout.module.css'
+import styles from './Interface.module.css'
 import { IUserContact } from '../../models/requestData'
 
-export default function Layout () {
+export default function Interface () {
 
   const [chatValues, setChatValues] = useState<IUserContact>({
     name: '',
@@ -13,14 +13,13 @@ export default function Layout () {
   })
 
   const startChat = (values: IUserContact) => {
-    console.log(values)
     setChatValues({
       name: values.name,
       avatar: values.avatar,
       chatId: values.chatId
     })
   }
-console.log(chatValues)
+
   return (
     <div className={styles.container}>
       <Contacts startChat={startChat}/>

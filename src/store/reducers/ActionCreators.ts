@@ -48,7 +48,6 @@ export const fetchUserContact = ({idInstance, apiTokenInstance}: IUserData, chat
     dispatch(contactsSlice.actions.dataFetching())
     const response: IUserContact = await getContactInfo({idInstance, apiTokenInstance}, chatId)
     const contact = {...response, chatId: response.chatId.slice(0, 11)}
-    console.log(contact)
     dispatch(contactsSlice.actions.dataFetchingSuccess(contact))
   } catch {
     dispatch(contactsSlice.actions.dataFetchingError({
@@ -63,7 +62,7 @@ export const fetchMessage = ({...props}: IMessageWithUserData) => async (dispatc
   try {
     dispatch(messagesSlice.actions.dataFetching())
     const response: IUserMessage = await sendMessage({...props})
-    dispatch(messagesSlice.actions.dataFetchingSuccess({...response, message: props.message}))
+    dispatch(messagesSlice.actions.dataFetchingSuccess({...response, message: props.message, incoming: false}))
   } catch {
     dispatch(messagesSlice.actions.dataFetchingError({
       isError: true, message: 'Не удалось отправить сообщение'
