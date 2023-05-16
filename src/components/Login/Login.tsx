@@ -9,7 +9,7 @@ export default function Login({submitForm}: {submitForm: ({...args}: IUserData) 
   const idRef = useRef<HTMLInputElement>(null)
   const tokenRef = useRef<HTMLInputElement>(null)
   const dialogfRef = useRef<HTMLDialogElement>(null)
-  const {userData, error, loading} = useAppSelector(state => state.user)
+  const {userData, error} = useAppSelector(state => state.user)
 
   // Закрытие окна формы, если проверка авторизации прошла успешно
   useEffect(() => {

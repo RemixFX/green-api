@@ -13,6 +13,7 @@ export default function Chat({ chatValues }: { chatValues: IUserContact }) {
   const { userData } = useAppSelector(state => state.user)
   const dispatch = useAppDispatch()
 
+  // Отправка сообщений по клавише 'Enter'
   const sendMessage = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       dispatch(fetchMessage({
@@ -25,6 +26,7 @@ export default function Chat({ chatValues }: { chatValues: IUserContact }) {
     }
   }
 
+  // Скролл в нижнюю часть при новых сообщениях
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }

@@ -32,6 +32,7 @@ export default function Contacts({startChat}: ContactsProps) {
     dispatch(fetchUserContact(userData, chatId))
   }
 
+  // Передача данных контакта при клике на контакт
   const handleContactClick = ({...values}: IUserContact) => {
     startChat({...values})
   }
