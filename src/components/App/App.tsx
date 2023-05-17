@@ -23,7 +23,7 @@ function App() {
         receiveNotification(userData)
           .then((res) => {
             if (res === null) return
-            if (res.body.messageData.textMessageData.textMessage) {
+            if (res.body.typeMessage === 'textMessage') {
               dispatch(messagesSlice.actions.dataFetchingSuccess({
                 idMessage: res.body.idMessage,
                 message: res.body.messageData.textMessageData.textMessage,
