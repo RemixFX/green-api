@@ -13,7 +13,8 @@
 - создание нового чата
 > <img alt="home-page" src="media/new-chat.png" width="100%">
 - отправка и приём сообщений
-> 
+> <img alt="home-page" src="media/chat.png" width="100%">
+> <video src="media/record.mp4" autoplay loop>
 
 # Информация разработки
 - cайт написан на библиотеке **`React`** c использованием **`TypeScript`**
